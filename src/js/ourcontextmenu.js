@@ -86,7 +86,7 @@ if("undefined"==typeof jQuery){
                 
                 var contextLocation = api.getContextPosition(event,container);
                 console.log(contextLocation);
-                $(".our-context-menu").finish().toggle().css({
+                $(container).finish().toggle().css({
                     top: contextLocation.y + "px",
                     left: contextLocation.x + "px"
                 });
@@ -95,28 +95,30 @@ if("undefined"==typeof jQuery){
             // If the document is clicked somewhere
             $(document).bind("mousedown", function (event) {
                 // If the clicked element is not the menu
-                if (!$(event.target).parents(".our-context-menu").length > 0) {
+                if (!$(event.target).parents('.our-context-menu').length > 0) {
 
                     // Hide it if not prevented
-                    
                     if(typeof settings.onHide === 'function'){
                         var close = settings.onHide();
                         
                         if(close !== false){
-                            $(".our-context-menu").hide();
+                            $(container).hide();
                         }
+                    // else close it
+                    }else{
+                        $(container).hide();
                     }
                 }
             });
             
-            $(".our-context-menu li").click(function(){
+            $(container).find('li').click(function(){
                 var action = $(this).attr("data-action");
                 
                 if(typeof settings.onAction === 'function'){
                     var execute = settings.onAction(action);
                     
                     if(execute !== false){
-                        $(".our-context-menu").hide();
+                        $(container).hide();
                     }
                 }
             });
