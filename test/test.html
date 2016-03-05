@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../src/css/ourcontextmenu.youtube.css">
+        <script src="jquery.min.js"></script>
+        <script src="../src/js/ourcontextmenu.js"></script>
+    </head>
+    <body>
+        <div id="demo" style="height:1000px;width:100%;background-color:red;">TODO write content</div>
+        <ul class="our-context-menu" id="context-menu">
+            <li data-action="1">qweqweqweqweqweqweqweqweqwe<br>Hola</li>
+            <li data-action="2">Second thing</li>
+            <li data-action="3">Third thing</li>
+        </ul>
+        <script>
+            $(function(){
+                $('#context-menu').ourcontextmenu({
+                    target: $('#demo'),
+                    onAction: function(action){
+                        console.info(action);
+                        switch(action){
+                            case "1":
+                                
+                            break;
+                        }
+                    },
+                    onHide: function(){
+                        
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
