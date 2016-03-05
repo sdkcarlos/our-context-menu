@@ -1,0 +1,28 @@
+.our-context-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    background: #FFF;
+    color: #333;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding:0;
+    margin: 0;
+}
+
+.our-context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style-image: none;
+    list-style: none;
+    list-style-type: none;
+}
+
+.our-context-menu li:hover {
+    background-color: #2780e3;
+    color:#FFF;
+}

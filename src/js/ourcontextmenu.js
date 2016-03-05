@@ -85,11 +85,22 @@ if("undefined"==typeof jQuery){
                 event.preventDefault();
                 
                 var contextLocation = api.getContextPosition(event,container);
-                console.log(contextLocation);
-                $(container).finish().toggle().css({
-                    top: contextLocation.y + "px",
-                    left: contextLocation.x + "px"
-                });
+                
+                if(typeof settings.beforeShow === 'function'){
+                    var show = settings.beforeShow();
+                    
+                    if(show !== false){
+                        $(container).finish().toggle().css({
+                            top: contextLocation.y + "px",
+                            left: contextLocation.x + "px"
+                        });
+                    }
+                }else{
+                    $(container).finish().toggle().css({
+                        top: contextLocation.y + "px",
+                        left: contextLocation.x + "px"
+                    });
+                }
             });
             
             // If the document is clicked somewhere
@@ -112,10 +123,10 @@ if("undefined"==typeof jQuery){
             });
             
             $(container).find('li').click(function(){
-                var action = $(this).attr("data-action");
+                var selectedDom = $(this);
                 
                 if(typeof settings.onAction === 'function'){
-                    var execute = settings.onAction(action);
+                    var execute = settings.onAction(selectedDom);
                     
                     if(execute !== false){
                         $(container).hide();

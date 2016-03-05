@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../src/css/ourcontextmenu.youtube.css">
+        <link rel="stylesheet" href="../src/css/ourcontextmenu.cosmo.css">
         <script src="jquery.min.js"></script>
         <script src="../src/js/ourcontextmenu.js"></script>
     </head>
@@ -25,15 +25,17 @@ and open the template in the editor.
             $(function(){
                 $('#context-menu').ourcontextmenu({
                     target: $('#demo'),
-                    onAction: function(action){
-                        console.info(action);
-                        switch(action){
+                    onAction: function(dom){
+                        switch(dom.attr('data-action')){
                             case "1":
-                                
+                                console.log("hola");
                             break;
                         }
                     },
                     onHide: function(){
+                        
+                    },
+                    beforeShow: function(){
                         
                     }
                 });
