@@ -1,0 +1,10 @@
+/**
+ * A contextual menu built with jQuery
+ * 
+ * @docs http://ourcodeworld.com/projects/projects-documentation/4/list/our-context-menu
+ * @author Carlos Delgado - Our Code World
+ * @version 1.0
+ * @param {jQuery} $
+ * @returns {undefined}
+ */
+if("undefined"==typeof jQuery)throw new Error("Our Context Menu requires jQuery");!function(e){var t={};t.getContextPosition=function(t,n){var i={windowWidth:e(window).width(),windowHeight:e(window).height(),containerWidth:e(n).outerWidth(),containerHeight:e(n).outerHeight(),distanceX:t.pageX,distanceY:t.pageY},o={};i.distanceX+i.containerWidth<=i.windowWidth&&i.distanceY+i.containerHeight<=i.windowHeight?(o.x=t.pageX,o.y=t.pageY):i.distanceX+i.containerWidth>=i.windowWidth&&i.distanceY+i.containerHeight>=i.windowHeight?(o.x=t.pageX-i.containerWidth,o.y=t.pageY-i.containerHeight):i.distanceX+i.containerWidth>=i.windowWidth?(o.x=t.pageX-i.containerWidth,o.y=t.pageY):i.distanceY+i.containerHeight>=i.windowHeight&&(o.x=t.pageX,o.y=t.pageY-i.containerHeight);var r=e(n).offsetParent().offset();return o.x=o.x-r.left,o.y=o.y-r.top,o},t.selector={ourcontextmenu:function(n){var i=this;if(!(n.target instanceof jQuery))throw new Error("The context menu needs a target (selected DOM item with jQuery)");n.target.bind("contextmenu",function(o){o.preventDefault();var r=t.getContextPosition(o,i);if("function"==typeof n.beforeShow){var a=n.beforeShow(e(o.target));a!==!1&&e(i).finish().toggle().css({top:r.y+"px",left:r.x+"px"})}else e(i).finish().toggle().css({top:r.y+"px",left:r.x+"px"})}),e(document).bind("mousedown",function(t){if(!e(t.target).parents(".our-context-menu").length>0)if("function"==typeof n.onHide){var o=n.onHide();o!==!1&&e(i).hide()}else e(i).hide()}),e(i).find("li").click(function(){var t=e(this);if("function"==typeof n.onAction){var o=n.onAction(t);o!==!1&&e(i).hide()}})}},e.fn.extend(t.selector)}(jQuery);

@@ -1,12 +1,3 @@
-/**
- * A contextual menu built with jQuery
- * 
- * @docs http://ourcodeworld.com/projects/projects-documentation/4/list/our-context-menu
- * @author Carlos Delgado - Our Code World
- * @version 1.0
- * @param {jQuery} $
- * @returns {undefined}
- */
 if("undefined"==typeof jQuery){
     throw new Error("Our Context Menu requires jQuery");
 }
@@ -68,8 +59,15 @@ if("undefined"==typeof jQuery){
      */
     api.selector = {
         /**
+         * Function to determine an action when the user
+         * stops press a key in a DOM Object
+         * useful for example (searchers) to not send 
+         * a query every time the user press a key, instead
+         * this will do the action after of a keypress with 
+         * a given or default time.
          * 
-         * @param {object} settings
+         * @param {function} funcion
+         * @param {integer} tiempo
          * @returns {undefined}
          */
         ourcontextmenu : function(settings){
@@ -86,7 +84,7 @@ if("undefined"==typeof jQuery){
                 var contextLocation = api.getContextPosition(event,container);
                 
                 if(typeof settings.beforeShow === 'function'){
-                    var show = settings.beforeShow($(event.target));
+                    var show = settings.beforeShow(event.target);
                     
                     if(show !== false){
                         $(container).finish().toggle().css({
